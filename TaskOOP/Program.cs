@@ -137,12 +137,21 @@ namespace TaskOOP
             Console.WriteLine("Pilih Pegawai Yang Ingin Dihapus");
             int delOption = Convert.ToInt32(Console.ReadLine());
 
-            instansiDel.Employees.RemoveAt(delOption - 1);
+            Console.WriteLine($"Apakah Anda Yakin Akan Menghapus Pegawai {instansiDel.Employees[delOption - 1].Name}? (Y/N)");
+            string konfirmasi = Console.ReadLine();
+            if (konfirmasi == "Y")
+            {
+                instansiDel.Employees.RemoveAt(delOption - 1);
 
-            Console.Clear();
+                Console.Clear();
 
-            Console.WriteLine("Data Pegawai Berhasil Dihapus!!!");
-            MenuRepeat(instances);
+                Console.WriteLine("Data Pegawai Berhasil Dihapus!!!");
+                MenuRepeat(instances);
+            }
+            else
+            {
+                MenuRepeat(instances);
+            }
         }
 
         private static void TambahPegawai(List<Pegawai> instances)
