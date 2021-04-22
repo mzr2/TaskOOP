@@ -1,0 +1,7 @@
+C:\Users\HidGa\Documents\GitHub\Tugas-1---Github\Zulfikar\Learn\TaskOOP\TaskOOP\TaskOOP\bin\Debug\TaskOOP.exe.config
+C:\Users\HidGa\Documents\GitHub\Tugas-1---Github\Zulfikar\Learn\TaskOOP\TaskOOP\TaskOOP\bin\Debug\TaskOOP.exe
+C:\Users\HidGa\Documents\GitHub\Tugas-1---Github\Zulfikar\Learn\TaskOOP\TaskOOP\TaskOOP\bin\Debug\TaskOOP.pdb
+C:\Users\HidGa\Documents\GitHub\Tugas-1---Github\Zulfikar\Learn\TaskOOP\TaskOOP\TaskOOP\obj\Debug\TaskOOP.csprojAssemblyReference.cache
+C:\Users\HidGa\Documents\GitHub\Tugas-1---Github\Zulfikar\Learn\TaskOOP\TaskOOP\TaskOOP\obj\Debug\TaskOOP.csproj.CoreCompileInputs.cache
+C:\Users\HidGa\Documents\GitHub\Tugas-1---Github\Zulfikar\Learn\TaskOOP\TaskOOP\TaskOOP\obj\Debug\TaskOOP.exe
+C:\Users\HidGa\Documents\GitHub\Tugas-1---Github\Zulfikar\Learn\TaskOOP\TaskOOP\TaskOOP\obj\Debug\TaskOOP.pdb
