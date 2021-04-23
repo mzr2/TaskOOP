@@ -17,37 +17,49 @@ namespace TaskOOP
         static void Menu(List<Pegawai> instances)
         {
             TampilMenu();
-            int opsi = Convert.ToInt32(Console.ReadLine());
-            switch (opsi)
+            
+            try
             {
-                case 1:
-                    TambahInstansi(instances);
-                    break;
-                case 2:
-                    TambahPegawai(instances);
-                    break;
-                case 3:
-                    HapusDataPegawai(instances);
-                    break;
-                case 4:
-                    HapusDataInstansi(instances);
-                    break;
-                case 5:
-                    TampilDataInstansi(instances);
-                    break;
-                case 6:
-                    TampilDataInstansiPegawai(instances);
-                    break;
-                case 0:
-                    Console.WriteLine("Terima Kasih!");
-                    Console.ReadLine();
-                    break;
-                default:
-                    Console.WriteLine("Pilihan Tidak Ditemukan, Silahkan Mengulang!");
-                    Console.ReadLine();
-                    MenuRepeat(instances);
-                    break;
+                int opsi = Convert.ToInt32(Console.ReadLine());
+                switch (opsi)
+                {
+                    case 1:
+                        TambahInstansi(instances);
+                        break;
+                    case 2:
+                        TambahPegawai(instances);
+                        break;
+                    case 3:
+                        HapusDataPegawai(instances);
+                        break;
+                    case 4:
+                        HapusDataInstansi(instances);
+                        break;
+                    case 5:
+                        TampilDataInstansi(instances);
+                        break;
+                    case 6:
+                        TampilDataInstansiPegawai(instances);
+                        break;
+                    case 0:
+                        Console.WriteLine("Terima Kasih!");
+                        Console.ReadLine();
+                        break;
+                    default:
+                        Console.WriteLine("Pilihan Tidak Ditemukan, Silahkan Mengulang!");
+                        Console.ReadLine();
+                        MenuRepeat(instances);
+                        break;
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadLine();
+                Console.Clear();
+                MenuRepeat(instances);
+            }
+            
         }
 
         private static void TampilMenu()
@@ -94,20 +106,29 @@ namespace TaskOOP
             if (instances.Count > 0)
             {
                 Console.WriteLine("Pilih Instansi");
-                int opsiDelInstance = Convert.ToInt32(Console.ReadLine());
-                string insName = instances[opsiDelInstance - 1].Instance;
-                Console.WriteLine($"Apakah Anda Yakin Akan Menghapus Instansi {instances[opsiDelInstance - 1].Instance}? (Y/N)");
-                string konfirmasi = Console.ReadLine();
-                if (konfirmasi == "Y")
+                try
                 {
-                    instances.RemoveAt(opsiDelInstance - 1);
+                    int opsiDelInstance = Convert.ToInt32(Console.ReadLine());
+                    string insName = instances[opsiDelInstance - 1].Instance;
+                    Console.WriteLine($"Apakah Anda Yakin Akan Menghapus Instansi {instances[opsiDelInstance - 1].Instance}? (Y/N)");
+                    string konfirmasi = Console.ReadLine();
+                    if (konfirmasi == "Y")
+                    {
+                        instances.RemoveAt(opsiDelInstance - 1);
 
-                    Console.Clear();
-                    Console.WriteLine($"Data Instansi {insName} Berhasil Dihapus!!!");
-                    MenuRepeat(instances);
+                        Console.Clear();
+                        Console.WriteLine($"Data Instansi {insName} Berhasil Dihapus!!!");
+                        MenuRepeat(instances);
+                    }
+                    else
+                    {
+                        MenuRepeat(instances);
+                    }
                 }
-                else
+                catch (Exception e)
                 {
+                    Console.WriteLine(e.Message);
+                    Console.ReadLine();
                     MenuRepeat(instances);
                 }
             }
@@ -124,32 +145,41 @@ namespace TaskOOP
             ShowInstances(instances);
 
             Console.WriteLine("Pilih Instansi");
-            int opsiInstanceDel = Convert.ToInt32(Console.ReadLine());
-            Pegawai instansiDel = instances.ElementAt(opsiInstanceDel - 1);
-
-            Console.Clear();
-            Console.WriteLine("=====Instansi Terpilih=====");
-            Console.WriteLine($"Nama Instansi : {instansiDel.Instance}");
-            Console.WriteLine($"ID Instansi   : {instansiDel.Id}");
-            Console.WriteLine("===========================");
-            instansiDel.ShowAllEmployees();
-
-            Console.WriteLine("Pilih Pegawai Yang Ingin Dihapus");
-            int delOption = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine($"Apakah Anda Yakin Akan Menghapus Pegawai {instansiDel.Employees[delOption - 1].Name}? (Y/N)");
-            string konfirmasi = Console.ReadLine();
-            if (konfirmasi == "Y")
+            try
             {
-                instansiDel.Employees.RemoveAt(delOption - 1);
+                int opsiInstanceDel = Convert.ToInt32(Console.ReadLine());
+                Pegawai instansiDel = instances.ElementAt(opsiInstanceDel - 1);
 
                 Console.Clear();
+                Console.WriteLine("=====Instansi Terpilih=====");
+                Console.WriteLine($"Nama Instansi : {instansiDel.Instance}");
+                Console.WriteLine($"ID Instansi   : {instansiDel.Id}");
+                Console.WriteLine("===========================");
+                instansiDel.ShowAllEmployees();
 
-                Console.WriteLine("Data Pegawai Berhasil Dihapus!!!");
-                MenuRepeat(instances);
+                Console.WriteLine("Pilih Pegawai Yang Ingin Dihapus");
+                int delOption = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine($"Apakah Anda Yakin Akan Menghapus Pegawai {instansiDel.Employees[delOption - 1].Name}? (Y/N)");
+                string konfirmasi = Console.ReadLine();
+                if (konfirmasi == "Y")
+                {
+                    instansiDel.Employees.RemoveAt(delOption - 1);
+
+                    Console.Clear();
+
+                    Console.WriteLine("Data Pegawai Berhasil Dihapus!!!");
+                    MenuRepeat(instances);
+                }
+                else
+                {
+                    MenuRepeat(instances);
+                }
             }
-            else
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
+                Console.ReadLine();
                 MenuRepeat(instances);
             }
         }
@@ -163,39 +193,48 @@ namespace TaskOOP
             if (instances.Count > 0)
             {
                 Console.WriteLine("Pilih Instansi");
-                int opsiInstance = Convert.ToInt32(Console.ReadLine());
-                if (opsiInstance - 1 > (instances.Count - 1) || opsiInstance - 1 < 0)
+                try
                 {
-                    Console.Clear();
-                    Console.WriteLine("Pilihan Diluar Index");
-                    Console.ReadLine();
-                    Console.Clear();
-                    MenuRepeat(instances);
+                    int opsiInstance = Convert.ToInt32(Console.ReadLine());
+                    if (opsiInstance - 1 > (instances.Count - 1) || opsiInstance - 1 < 0)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Pilihan Diluar Index");
+                        Console.ReadLine();
+                        Console.Clear();
+                        MenuRepeat(instances);
+                    }
+                    else
+                    {
+                        Pegawai instansi = instances.ElementAt(opsiInstance - 1);
+
+                        Console.Clear();
+                        Console.WriteLine("=====Instansi Terpilih=====");
+                        Console.WriteLine($"Nama Instansi : {instansi.Instance}");
+                        Console.WriteLine($"ID Instansi   : {instansi.Id}");
+                        Console.WriteLine("===========================");
+                        Console.WriteLine("Formulir Input Data Pegawai");
+                        Console.WriteLine("");
+                        Console.WriteLine("Nama        : ");
+                        string employeesName = Console.ReadLine();
+                        Console.WriteLine("NIP         : ");
+                        string employeesNip = Console.ReadLine();
+                        Console.WriteLine("Tahun Lahir :");
+                        int employeesDob = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Gaji        :");
+                        int employeesSalary = Convert.ToInt32(Console.ReadLine());
+                        Employees employees = new Employees(employeesName, employeesNip, employeesDob, employeesSalary);
+
+                        instansi.Employees.Add(employees);
+                        Console.Clear();
+                        Console.WriteLine($"Berhasil Menambahkan {employeesName} Sebagai Pegawai Pada Instansi {instansi.Instance} !!!");
+                        MenuRepeat(instances);
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    Pegawai instansi = instances.ElementAt(opsiInstance - 1);
-
-                    Console.Clear();
-                    Console.WriteLine("=====Instansi Terpilih=====");
-                    Console.WriteLine($"Nama Instansi : {instansi.Instance}");
-                    Console.WriteLine($"ID Instansi   : {instansi.Id}");
-                    Console.WriteLine("===========================");
-                    Console.WriteLine("Formulir Input Data Pegawai");
-                    Console.WriteLine("");
-                    Console.WriteLine("Nama        : ");
-                    string employeesName = Console.ReadLine();
-                    Console.WriteLine("NIP         : ");
-                    string employeesNip = Console.ReadLine();
-                    Console.WriteLine("Tahun Lahir :");
-                    int employeesDob = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("Gaji        :");
-                    int employeesSalary = Convert.ToInt32(Console.ReadLine());
-                    Employees employees = new Employees(employeesName, employeesNip, employeesDob, employeesSalary);
-
-                    instansi.Employees.Add(employees);
-                    Console.Clear();
-                    Console.WriteLine($"Berhasil Menambahkan {employeesName} Sebagai Pegawai Pada Instansi {instansi.Instance} !!!");
+                    Console.WriteLine(e.Message);
+                    Console.ReadLine();
                     MenuRepeat(instances);
                 }
             }
