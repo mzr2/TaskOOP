@@ -54,7 +54,8 @@ namespace TaskOOP
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                //Console.WriteLine(e.Message);
+                Console.WriteLine("Error : Masukkan pilihan sesuai dengan opsi yang tersedia");
                 Console.ReadLine();
                 Console.Clear();
                 MenuRepeat(instances);
@@ -127,7 +128,8 @@ namespace TaskOOP
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    //Console.WriteLine(e.Message);
+                    Console.WriteLine("Error : Masukkan pilihan sesuai dengan opsi yang tersedia");
                     Console.ReadLine();
                     MenuRepeat(instances);
                 }
@@ -178,7 +180,8 @@ namespace TaskOOP
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                //Console.WriteLine(e.Message);
+                Console.WriteLine("Error : Masukkan pilihan sesuai dengan opsi yang tersedia");
                 Console.ReadLine();
                 MenuRepeat(instances);
             }
@@ -233,7 +236,8 @@ namespace TaskOOP
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    //Console.WriteLine(e.Message);
+                    Console.WriteLine("Error : Masukkan pilihan sesuai dengan opsi yang tersedia");
                     Console.ReadLine();
                     MenuRepeat(instances);
                 }
